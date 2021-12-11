@@ -1,4 +1,6 @@
 <?php
+include('Middleware/Authenticantion.php');
+
 class CommentController
 {
     public static function index()
@@ -18,6 +20,8 @@ class CommentController
                     break;
                 }
                 include('View/Admin/Auth/login.php');
+                break;
+            case 'delete':
                 break;
             default:
                 break;

@@ -1,4 +1,6 @@
 <?php
+include('Middleware/Authenticantion.php');
+
 class PostController
 {
     public static function index()
@@ -13,58 +15,41 @@ class PostController
 
         switch ($action) {
             case 'index':
-                if (isset($_SESSION['auth'])) {
-                    $post = Post::getpost();
-                    include('View/Admin/Post/index.php');
-                    break;
-                }
-                include('View/Admin/login.php');
+                // var_dump(122);
+                // die();
+                $post = Post::getpost();
+                include('View/Admin/Posts/index.php');
                 break;
-                // case 'create':
-                //     $categories = Category::getcate();
-                //     $post = Post::getpost();
-                //     include('View/Admin/Post/create.php');
-                //     break;
-                // case 'store':
-                //     $title = filter_input(INPUT_POST, 'title');
-                //     $author = filter_input(INPUT_POST, 'author');
-                //     $category_id = filter_input(INPUT_POST, 'category_id');
-                //     $maxdate = filter_input(INPUT_POST, 'maxdate');
-                //     $information = filter_input(INPUT_POST, 'information');
-                //     $summary = filter_input(INPUT_POST, 'summary');
-                //     //Xử lý lưu ảnh lên server
-                //     $image_dir_path = getcwd() . '/public/images/post';
-                //     if (isset($_FILES['picture'])) {
-                //         $filename = $_FILES['picture']['name'];
-                //         if (!empty($filename)) {
-                //             $source     =     $_FILES['picture']['tmp_name'];
-                //             $target     =     $image_dir_path . '/' . $filename;
-                //             $success =     move_uploaded_file($source, $target);
-                //             $picture = $filename;
-                //         }
-                //     } else {
-                //         $picture = "";
-                //         echo "image null";
-                //     }
+            case 'create':
+                $categories = Category::getcate();
+                $user = Admin::getadmin();
+                $post = Post::getpost();
+                include('View/Admin/Posts/create.php');
+                break;
+            case 'store':
+                $name = filter_input(INPUT_POST, 'name');
+                $category_id = filter_input(INPUT_POST, 'category_id');
+                $user_id = filter_input(INPUT_POST, 'user_id');
+                $title = filter_input(INPUT_POST, 'title');
+                $content = filter_input(INPUT_POST, 'content');
+                $description = filter_input(INPUT_POST, 'description');
+                $picture = filter_input(INPUT_POST, 'picture');
+                $image_detail = filter_input(INPUT_POST, 'image_detail');
+                Post::addpost($name, $category_id, $user_id, $title, $content, $description, $picture, $image_detail);
+                // $a = [$name, $category_id, $user_id, $title, $content, $description, $picture, $image_detail];
+                // var_dump($a);
+                // die();
+                $post = Post::getpost();
+                header('Location: .?controller=post&action=index');
+                break;
+            case 'post_detail':
+                $id = filter_input(INPUT_GET, 'id');
+                $post = Post::post_detail($id);
+                // var_dump(1111);
+                // exit();
 
-                //     $image_dir_path = getcwd() . '/public/images/post/image_detail';
-                //     if (isset($_FILES['image_detail'])) {
-                //         $filename = $_FILES['image_detail']['name'];
-                //         if (!empty($filename)) {
-                //             $source     =     $_FILES['image_detail']['tmp_name'];
-                //             $target     =     $image_dir_path . '/' . $filename;
-                //             $success =     move_uploaded_file($source, $target);
-                //             $image_detail = $filename;
-                //         }
-                //     } else {
-                //         $image_detail = "";
-                //         echo "image null";
-                //     }
-                //     Post::add($image_detail, $title, $author, $category_id, $maxdate, $information, $summary, $picture);
-                //     $post = Post::getpost();
-                //     header('Location: .?controller=postcontroller&action=index');
-                //     break;
-                //     break;
+                include('View/Admin/Posts/post_detail.php');
+                break;
                 // case 'edit':
                 //     $id = filter_input(INPUT_GET, 'id');
                 //     $categories = Category::getcate();

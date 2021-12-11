@@ -14,7 +14,7 @@
                      <!--change to offline or busy as needed-->
                  </div>
                  <div class="nav-profile-text d-flex flex-column pr-3">
-                     <span class="font-weight-medium mb-2">Henry Klein</span>
+                     <span class="font-weight-medium mb-2"></span>
                      <span class="font-weight-normal">$8,753.00</span>
                  </div>
                  <span class="badge badge-danger text-white ml-3 rounded">3</span>
@@ -28,23 +28,83 @@
          </li>
          <li class="nav-item">
              <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-                 <i class="mdi mdi-crosshairs-gps menu-icon"></i>
-                 <span class="menu-title">Basic UI Elements</span>
+                 <i class="mdi mdi-table-large menu-icon"></i>
+                 <span class="menu-title">CATEGORIES</span>
                  <i class="menu-arrow"></i>
              </a>
              <div class="collapse" id="ui-basic">
                  <ul class="nav flex-column sub-menu">
                      <li class="nav-item">
-                         <a class="nav-link" href="pages/ui-features/buttons.html">Buttons</a>
+                         <a class="nav-link" href="pages/ui-features/buttons.html">LIST</a>
                      </li>
                      <li class="nav-item">
-                         <a class="nav-link" href="pages/ui-features/dropdowns.html">Dropdowns</a>
+                         <a class="nav-link" href="pages/ui-features/dropdowns.html">CREATE</a>
                      </li>
                      <li class="nav-item">
-                         <a class="nav-link" href="pages/ui-features/typography.html">Typography</a>
+                         <a class="nav-link" href="pages/ui-features/typography.html">EDIT</a>
                      </li>
                  </ul>
              </div>
+         </li>
+         <li class="nav-item">
+             <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+                 <i class="mdi mdi-table-large menu-icon"></i>
+                 <span class="menu-title">POSTS</span>
+                 <i class="menu-arrow"></i>
+             </a>
+             <div class="collapse" id="ui-basic">
+                 <ul class="nav flex-column sub-menu">
+                     <li class="nav-item">
+                         <a class="nav-link" href="pages/ui-features/buttons.html">LIST</a>
+                     </li>
+                     <li class="nav-item">
+                         <a class="nav-link" href="pages/ui-features/dropdowns.html">CREATE</a>
+                     </li>
+                     <li class="nav-item">
+                         <a class="nav-link" href="pages/ui-features/typography.html">EDIT</a>
+                     </li>
+                 </ul>
+             </div>
+         </li>
+
+         <!-- <li class="nav-item">
+             <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+                 <i class="mdi mdi-crosshairs-gps menu-icon"></i>
+                 <span class="menu-title">USER</span>
+                 <i class="menu-arrow"></i>
+             </a>
+             <div class="collapse" id="ui-basic">
+                 <ul class="nav flex-column sub-menu">
+                     <li class="nav-item">
+                         <a class="nav-link" href="pages/ui-features/buttons.html">LIST</a>
+                     </li>
+                     <li class="nav-item">
+                         <a class="nav-link" href="pages/ui-features/dropdowns.html">CREATE</a>
+                     </li>
+                     <li class="nav-item">
+                         <a class="nav-link" href="pages/ui-features/typography.html">EDIT</a>
+                     </li>
+                 </ul>
+             </div>
+
+         </li> -->
+         <li class="nav-item">
+             <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+                 <i class="mdi mdi-crosshairs-gps menu-icon"></i>
+                 <span class="menu-title">ROLES</span>
+                 <i class="menu-arrow"></i>
+             </a>
+             <div class="collapse" id="ui-basic">
+                 <ul class="nav flex-column sub-menu">
+                     <li class="nav-item">
+                         <a class="nav-link" href="pages/ui-features/buttons.html">LIST</a>
+                     </li>
+                     <li class="nav-item">
+                         <a class="nav-link" href="pages/ui-features/dropdowns.html">CREATE</a>
+                     </li>
+                 </ul>
+             </div>
+
          </li>
          <li class="nav-item">
              <a class="nav-link" href="pages/icons/mdi.html">
@@ -88,7 +148,8 @@
                          <p class="text-black">Notification</p>
                      </div>
                      <ul class="mt-4 pl-0">
-                         <li>Sign Out</li>
+                         <li><a href="?controller=admin&action=logout">Sign Out</a></li>
+
                      </ul>
                  </div>
              </div>

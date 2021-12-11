@@ -1,5 +1,5 @@
 <?php
-
+include('Middleware/Authenticantion.php');
 class CategoryController
 {
     public static function index()
@@ -21,37 +21,41 @@ class CategoryController
                 // include('View/Admin/login.php');
                 break;
             case 'add':
-                // $categories = Category::getcate();
+                $user = Admin::getadmin();
+                $categories = Category::getcate();
+                // $user = User::getuser();
                 include('View/Admin/Categories/create.php');
                 break;
             case 'store':
                 $name = filter_input(INPUT_POST, 'name');
                 $paren_id = filter_input(INPUT_POST, 'paren_id');
-                Category::add($name, $paren_id);
+                $user_id = filter_input(INPUT_POST, 'user_id');
+                Category::add($name, $paren_id, $user_id);
                 $categories = Category::getcate();
                 header('Location: .?controller=category&action=list_category');
                 exit();
                 break;
-                // case 'edit':
-                //     $id = filter_input(INPUT_GET, 'id');
-                //     $category = Category::editCategories($id);
-                //     $categories = Category::getcate();
-                //     include('View/Admin/Categories/edit.php');
-                //     break;
-                // case 'save':
-                //     $id = filter_input(INPUT_POST, 'id');
-                //     $categoryname = filter_input(INPUT_POST, 'categoryname');
-                //     $paren_id = filter_input(INPUT_POST, 'paren_id');
-                //     Category::updatecategory($id, $categoryname, $paren_id);
-                //     $categories = Category::getcate();
-                //     header('Location: .?controller=categorycontroller&action=list_category');
-                //     break;
-                // case 'delete':
-                //     $id = filter_input(INPUT_GET, 'id');
-                //     Category::deletecategory($id);
-                //     $categories = Category::getcate();
-                //     header('Location: .?controller=categorycontroller&action=list_category');
-                //     break;
+            case 'edit':
+                $id = filter_input(INPUT_GET, 'id');
+                $category = Category::editCategories($id);
+                $categories = Category::getcate();
+                include('View/Admin/Categories/edit.php');
+                break;
+            case 'save':
+                $id = filter_input(INPUT_POST, 'id');
+                $name = filter_input(INPUT_POST, 'name');
+                $paren_id = filter_input(INPUT_POST, 'paren_id');
+                Category::updatecategory($id, $name, $paren_id, $user_id);
+
+                $category = Category::getcate();
+                header('Location: .?controller=category&action=list_category');
+                break;
+            case 'delete':
+                $id = filter_input(INPUT_GET, 'id');
+                Category::deletecategory($id);
+                $category = Category::getcate();
+                header('Location: .?controller=category&action=list_category');
+                break;
             default:
                 //code
                 include('View/error/error_404.php');

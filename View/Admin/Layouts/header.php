@@ -125,12 +125,16 @@
                 <li class="nav-item nav-profile dropdown border-0">
                     <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-toggle="dropdown">
                         <img class="nav-profile-img mr-2" alt="" src="Public/assets/images/faces/face1.jpg" />
-                        <span class="profile-name">Henry Klein</span>
+                        <span class="profile-name"><?php echo $_SESSION['user']['name'] ?></span>
                     </a>
                     <div class="dropdown-menu navbar-dropdown w-100" aria-labelledby="profileDropdown">
-                        <a class="dropdown-item" href="#">
-                            <i class="mdi mdi-cached mr-2 text-success"></i> Activity Log </a>
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item"
+                            href="?controller=admin&action=change-password&id=<?php echo $_SESSION['user']['id'] ?>">
+                            <i class="mdi mdi-cached mr-2 text-success"></i>Change Password</a>
+                        <a class="dropdown-item"
+                            href="?controller=admin&action=edit&id=<?php echo $_SESSION['user']['id'] ?>">
+                            <i class="mdi mdi-cached mr-2 text-success"></i>Change Info</a>
+                        <a class="dropdown-item" href="?controller=admin&action=logout">
                             <i class="mdi mdi-logout mr-2 text-primary"></i> Signout </a>
                     </div>
                 </li>
